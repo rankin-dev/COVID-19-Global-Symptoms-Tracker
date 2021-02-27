@@ -1,0 +1,6 @@
+library(readxl)
+data <- read_excel("/Users/melissapothen/Desktop/Marilyn/covid_americas_dates")
+reg1 <- lm(data$smoothed_cli ~ data$smoothed_wash_hands_24h_3to6 + data$smoothed_hf + data$smoothed_mc + data$smoothed_trust_who + data$smoothed_trust_govt + data$smoothed_access_wash + data$smoothed_wash_hands_24h_3to6 + data$smoothed_wash_hands_24h_7ormore + data$smoothed_sideeffects + data$smoothed_dc + data$smoothed_modified_acceptance + factor(data$month))
+summary(reg1)
+plot(reg1)
+stargazer(reg1, type = "text", title="Selected Indicators", digits=1, out="table1.txt")
